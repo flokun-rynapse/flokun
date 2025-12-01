@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rynapse - Services</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* --- Background Image and Styling --- */
+            background-image: url('bg.jpg'); /* REPLACE THIS! */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+.form-box {
+    position: center;
+    width: 1000px;
+    padding: 30px;
+    border-radius: 15px;
+    /* Glassmorphism/blur effect - DECREASED TRANSPARENCY (0.8) */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white; 
+    
+    /* --- NEW SCROLLABLE PROPERTIES --- */
+    max-height: 90vh; /* Set a maximum height (e.g., 90% of the viewport height) */
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }/* Add a vertical scrollbar when content exceeds max-height */
+    /* ---------------------------------- */
+}
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /*
+         * STYLES FOR THE IMAGE BUTTONS
+         */
+        .my-input-button {
+            /* Fixes padding and dimensions to be exactly 100x50 */
+            box-sizing: border-box; 
+            width: 100px;
+            height: 50px;
+            
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain; /* Use 'contain' to fit image without cropping */
+            
+            cursor: pointer;
+            position: relative;
+            
+            /* **CORRECTION**: Changed from 5s to 0.3s for a smooth, fast hover effect */
+            transition: left 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; 
+            
+            box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3);
+            
+            /* Reduced padding, as image fills the button using background */
+            padding: 0; 
+            border-radius: 25px; 
+            border: none;
+            
+            /* Add margin to separate buttons slightly */
+            margin: 0 5px;
+        }
+        
+        .my-input-button:hover {
+            /* Hover effect to move the button slightly up and left */
+            left: -0.15cm;
+            top: -0.15cm;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+        
+        .register{
+            color: white;
+        }
+        .register :hover{
+            color: darkgray;
+        }
+        .contact{
+            color: white;
+        }
+        .contact:hover{
+            color: darkgray;
+        }
+        
+    </style>
+    
+</head>
+<body>
+<div class="form-box">
+    
+    <div class="register" >
+        <a>Register</a>
+    </div>
+    <br>
+    <div class="contact" >
+        <a>Contact</a>
+    </div>
+    
+    <div style="text-align:center; margin-top:40px;">
+        <img style="width: 30%;" src="logo.png" alt="Flokun Logo">
+    </div>
+    <div style="text-align:center; margin-top:70px;">
+        <button 
+            style="background-image: url('Home1.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="openNewSite('index.html')"> 
+            <span class="visually-hidden">Home Page</span>
+        </button>
+        
+        <button 
+            style="background-image: url('About1.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="openNewSite('about.html')">
+            <span class="visually-hidden">About Us</span>
+        </button>
+
+        <button 
+            style="background-image: url('Services1.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="openNewSite('services.html')">
+            <span class="visually-hidden">Our Services</span>
+        </button>
+    </div>
+    </div>
+    <script>
+        function openNewSite(fileName) {
+            window.open(fileName, '_self'); 
+        }
+    </script>
+</body>
+</html>
