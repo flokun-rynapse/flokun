@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flokun - Register</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* --- Background Image and Styling --- */
+            background-image: url('bg.jpg'); /* REPLACE THIS! */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+.form-box {
+    position: center;
+    width: 1000px;
+    padding: 30px;
+    border-radius: 15px;
+    /* Glassmorphism/blur effect - DECREASED TRANSPARENCY (0.8) */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white; 
+    
+    /* --- NEW SCROLLABLE PROPERTIES --- */
+    max-height: 90vh; /* Set a maximum height (e.g., 90% of the viewport height) */
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }/* Add a vertical scrollbar when content exceeds max-height */
+    /* ---------------------------------- */
+}
+        </style>
+    </head>
+    <body>
+    <div class="form-box">
+        <div style="text-align:center; margin-top:40px;">
+        <img style="width:30%;" src="logo.png" alt="Flokun Logo">
+    </div>
+        
+        </div>
+    </body>
+</html>

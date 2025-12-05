@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rynapse - About</title>
+    <title>Flokun - About</title>
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     
     
@@ -106,13 +106,13 @@
             color: white;
         }
         .register :hover{
-            color: darkgray;
+            color: yellow;
         }
         .contact{
             color: white;
         }
         .contact:hover{
-            color: darkgray;
+            color: yellow;
         }
     </style>
     
@@ -120,11 +120,11 @@
 <body>
 <div class="form-box">
      <div class="register" >
-        <a href="https://wa.me/message/4UQOIMSC223ZG1" style="color: white">Register</a>
+        <a onclick="open2ndSite('register.html')">Register</a>
     </div>
     <br>
     <div class="contact" >
-        <a href="https://wa.me/message/4UQOIMSC223ZG1" style="color: white">Contact</a>
+        <a onclick="open2ndSite('https://wa.me/message/4UQOIMSC223ZG1')">Contact</a>
     </div>
     <div style="text-align:center; margin-top:40px;">
         <img style="width: 30%;" src="logo.png" alt="Flokun Logo">
@@ -195,8 +195,10 @@ We are a team of dedicated professionals committed to delivering quality, innova
         function openNewSite(fileName) {
             window.open(fileName, '_self'); 
         }
+        function open2ndSite(fileName) {
+            window.open(fileName, '_main'); 
+        }
     </script>
     </div>
 </body>
-
 </html>
