@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flokun - Games</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* --- Background Image and Styling --- */
+            background-image: url('bg.jpg'); /* REPLACE THIS! */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+.form-box {
+    position: center;
+    width: 1000px;
+    padding: 30px;
+    border-radius: 15px;
+    /* Glassmorphism/blur effect - DECREASED TRANSPARENCY (0.8) */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: white; 
+    
+    /* --- NEW SCROLLABLE PROPERTIES --- */
+    max-height: 90vh; /* Set a maximum height (e.g., 90% of the viewport height) */
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }/* Add a vertical scrollbar when content exceeds max-height */
+    /* ---------------------------------- */
+}
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        .contact{
+            color: white;
+        }
+        .contact:hover{
+            color: yellow;
+        }
+        
+        
+        
+        .my-input-button {
+            box-sizing: border-box; 
+            width: 200px;
+            height: 200px;
+            
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            
+            cursor: pointer;
+            position: relative;
+            transition: left 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; 
+            box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3);
+            padding: 0; 
+            border-radius: 25px; 
+            border: none;
+            margin: 0 5px;
+        }
+        
+        .my-input-button:hover {
+            left: -0.15cm;
+            top: -0.15cm;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        
+        
+    </style>
+    
+</head>
+<body>
+<div class="form-box">
+    
+
+    <div class="contact" >
+        <a onclick="open2ndSite('https://wa.me/message/4UQOIMSC223ZG1')">Contact</a>
+    </div>
+    
+    <div style="text-align:center; margin-top:40px;">
+        <img style="width: 30%;" src="logo.png" alt="Flokun Logo">
+    </div>
+    
+    <br>
+    <div>
+    <div style="text-align:center; margin-top:70px;">
+        <button 
+            style="background-image: url('Apple-Catching-Game.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="open2ndSite('Apple-Catching-Game.html')"> 
+            <span class="visually-hidden">Home Page</span>
+        </button>
+        <button 
+            style="background-image: url('Flappy-Bird.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="open2ndSite('Flappy-Bird.html')"> 
+            <span class="visually-hidden">Home Page</span>
+        </button>
+        <button 
+            style="background-image: url('Geometridash.webp');" 
+            class="my-input-button" 
+            type="button"
+            onclick="open2ndSite('Geometridash.html')"> 
+            <span class="visually-hidden">Home Page</span>
+        </button>
+    
+    </div>
+    
+    
+    
+    </div>
+    <script>
+        function open2ndSite(fileName) {
+            window.open(fileName, '_main'); 
+        }
+    </script>
+</body>
+</html>
