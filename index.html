@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flokun - Home</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    
+    <style>
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover; /* This makes the video cover the screen without stretching */
+            background-color: black; /* Fallback color */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* --- Background Image and Styling --- */
+            background-image: url('bg.jpg'); /* REPLACE THIS! */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+               margin: 0;
+               padding: 0;
+               font-family: Arial, sans-serif;
+               color: white;
+               text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+.form-box {
+    position: center;
+    width: 1000px;
+    padding: 30px;
+    border-radius: 15px;
+    /* Glassmorphism/blur effect - DECREASED TRANSPARENCY (0.8) */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    color: white;
+    /* --- NEW SCROLLABLE PROPERTIES --- */
+    max-height: 90vh; /* Set a maximum height (e.g., 90% of the viewport height) */
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }/* Add a vertical scrollbar when content exceeds max-height */
+    /* ---------------------------------- */
+}
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /*
+         * STYLES FOR THE IMAGE BUTTONS (UNCHANGED)
+         */
+        .my-input-button {
+            box-sizing: border-box; 
+            width: 100px;
+            height: 50px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain; 
+            cursor: pointer;
+            position: relative;
+            transition: left 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; 
+            box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3);
+            padding: 0; 
+            border-radius: 25px; 
+            border: none;
+            margin: 0 5px;
+        }
+        
+        .my-input-button:hover {
+            left: -0.15cm;
+            top: -0.15cm;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5); 
+        }
+        
+        /*
+         * STYLES FOR THE MOVABLE IMAGES
+         */
+        .movable-image {
+            border-radius: 25px; 
+            border: none; 
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.6);
+            position: relative; 
+            transition: left 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; 
+            margin-right: 7.5px;
+            margin-left: 7.5px;
+        }
+        
+        .movable-image:hover {
+            left: -0.25cm;
+            top: -0.25cm;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7); 
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .nav-links a:hover {
+            color: #ffeb3b;
+        }
+        
+        .services-layout {
+            display: flex; 
+            justify-content: center; 
+            max-width: 980px; 
+            margin: 30px auto 0;
+            padding: 0 10px;
+            gap: 15px; 
+        }
+
+        .service-column {
+            width: 50%; 
+            text-align: left;
+            padding: 0 10px; 
+        }
+
+        .service-column h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: lightgray;
+        }
+
+        .service-column p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 0;
+            color: lightgray; 
+        }
+        .media-and-text-container {
+            max-width: 980px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        .register{
+            color: white;
+        }
+        .register :hover{
+            color: yellow ;
+        }
+        .contact{
+            color: white;
+        }
+        .contact:hover{
+            color: yellow;
+        }
+    </style>
+    
+</head>
+<body>
+
+ <div class="form-box">
+      <nav class="nav-links">
+            <a onclick="open2ndSite('register.html')">Register</a>
+            <a onclick="open2ndSite('https://wa.me/message/4UQOIMSC223ZG1')">Contact</a>
+        </nav>
+    <div style="text-align:center; margin-top:40px;">
+        <img style="width:30%;" src="logo.png" alt="Flokun Logo">
+    </div>
+    
+    <div style="text-align:center; margin-top:70px;">
+        
+        <button 
+            style="background-image: url('About1.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="openNewSite('about.html')">
+            <span class="visually-hidden">About Us</span>
+        </button>
+
+        <button 
+            style="background-image: url('Proceed1.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="openNewSite('proceed.html')">
+            <span class="visually-hidden">Proceed</span>
+        </button>
+        
+        <button 
+            style="background-image: url('Learn1.png');" 
+            class="my-input-button" 
+            type="button"
+            onclick="openNewSite('learn.html')">
+            <span class="visually-hidden">Learn</span>
+        </button>
+
+        
+    </div>
+    
+    <br><br><br>
+    
+    <div class="media-and-text-container">
+        
+        <div>
+            <img class="movable-image" style="width: 47.5%;" src="1 (2)1.png" alt="A descriptive image 1">
+            <img class="movable-image" style="width: 47.5%;" src="2 (2)1.png" alt="A descriptive image 2">
+        </div>
+
+        <div class="services-layout">
+            <div class="service-column">
+                <h2><b>Programming</b></h2>
+                <p>Beyond design, programming is the dedicated craft that transforms a static illustration into a dynamic, functional, and scalable digital asset. We write clean, secure, and future-proof code that serves as the invisible engine for your online success. Every line is an engineered solution, meticulously crafted to maximize user experience and deliver measurable impact for your business.</p>
+            </div>
+
+            <div class="service-column">
+                <h2><b>Designing</b></h2>
+                <p>Design is the art of strategic illustration. It's the critical first step where we translate your brand's essence and your business goals into a clean, intuitive, and visually compelling experience. We obsess over aesthetics, usability, and accessibility, ensuring every pixel is placed with purpose. Our focus is on crafting designs that not only look stunning but that guide the user, build trust, and ultimately amplify the impact of your message in a crowded digital landscape.</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function openNewSite(fileName) {
+            window.open(fileName, '_self'); 
+        }
+        function open2ndSite(fileName) {
+            window.open(fileName, '_main'); 
+        }
+    </script>
+    </div>
+</body>
+</html>

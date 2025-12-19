@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flokun - Learn</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    
+    <style>
+        /* Base Reset and Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            overflow: hidden; /* Prevents double scrollbars */
+        }
+
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        /* Glassmorphism Container */
+        .form-box {
+            width: 90%;
+            max-width: 1000px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            max-height: 85vh;
+            overflow-y: auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Custom Scrollbar */
+        .form-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .form-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Navigation Links */
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .nav-links a:hover {
+            color: #ffeb3b;
+        }
+        
+
+        /* Buttons */
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .my-input-button {
+            width: 100px;
+            height: 50px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            cursor: pointer;
+            border-radius: 25px;
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .my-input-button:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 6px 6px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Images and Layout */
+        .image-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .movable-image, .movable-image-center {
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            max-width: 100%;
+        }
+
+        .movable-image:hover, .movable-image-center:hover {
+            transform: scale(1.02);
+        }
+
+        .services-layout {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-column {
+            flex: 1;
+        }
+
+        .service-column h2 {
+            color: #fff;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .service-column p {
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .heading-12 {
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Utilities */
+        .text-center { text-align: center; }
+        .visually-hidden { display: none; }
+
+        @media (max-width: 600px) {
+            .services-layout, .image-row { flex-direction: column; }
+            .my-input-button { width: 45%; }
+        }
+    </style>
+</head>
+<body>
+
+    <video id="bgVideo" autoplay muted playsinline>
+        <source src="bg 1.mp4" type="video/mp4">
+    </video>
+
+    <div class="form-box">
+        <nav class="nav-links">
+            <a onclick="open2ndSite('register.html')">Register</a>
+            <a onclick="open2ndSite('https://wa.me/message/4UQOIMSC223ZG1')">Contact</a>
+            <a onclick="open2ndSite('/Learn/Games/index.html')">Our Games</a>
+        </nav>
+
+        <div class="text-center" style="margin-top: 20px;">
+            <img style="width: 300px;" src="logo.png" alt="Flokun Logo">
+        </div>
+
+        <div class="button-container">
+            <button style="background-image: url('Home1.png');" class="my-input-button" onclick="openNewSite('index.html')"></button>
+            <button style="background-image: url('About1.png');" class="my-input-button" onclick="openNewSite('about.html')"></button>
+            <button style="background-image: url('Proceed1.png');" class="my-input-button" onclick="openNewSite('proceed.html')"></button>
+        </div>
+<br><br>
+        <div class="heading-12">
+        <h1>Programming</h1>
+        </div>
+        <br><br>
+        <div class="image-row">
+            <img class="movable-image" style="width: 48%;" src="Python.jpg" alt="Python">
+            <img class="movable-image" style="width: 48%;" src="Scratch.png" alt="Scratch">
+        </div>
+
+        <div class="services-layout">
+            <div class="service-column">
+                <h2>Python</h2>
+                <p>Python is a beginner-friendly programming language known for its clear, readable syntax. Master core concepts to build automated scripts and web applications.</p>
+            </div>
+            <div class="service-column">
+                <h2>Scratch</h2>
+                <p>A visual language using colorful blocks to teach coding fundamentals. Design stories and games while developing problem-solving skills.</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <img class="movable-image-center" style="width: 60%;" src="Html.jpg" alt="HTML">
+        </div>
+
+        <div class="services-layout" style="justify-content: center;">
+            <div class="service-column" style="max-width: 600px; text-align: center;">
+                <h2>HTML</h2>
+                <p>The backbone of the internet. Learning HTML is the essential first step for any web developer, providing the skeleton for CSS and JavaScript.</p>
+            </div>
+        </div>
+        
+        <br><br><br>
+        
+         <div class="heading-12">
+        <h1>Designing</h1>
+        </div>
+        <br><br>
+         <div class="text-center">
+            <img class="movable-image-center" style="width: 60%;" src="Poster%20Disigning.jpg" alt="HTML">
+        </div>
+        <div class="services-layout" style="justify-content: center;">
+            <div class="service-column" style="max-width: 600px; text-align: center;">
+                <h2>Poster Designing</h2>
+                <p>Poster design combines visual hierarchy and impactful typography to communicate a message clearly and instantly to an audience. By mastering the balance of color, imagery, and whitespace, you can transform a simple layout into a compelling piece of art that captures attention and inspires action.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        // Video Playlist Logic
+        const playlist = ['bg 1.mp4', 'bg 2.mp4'];
+        let currentIndex = 0;
+        const videoElement = document.getElementById('bgVideo');
+
+        function nextVideo() {
+            currentIndex = (currentIndex + 1) % playlist.length;
+            videoElement.src = playlist[currentIndex];
+            videoElement.play();
+        }
+        setInterval(nextVideo, 12000);
+
+        // Navigation Logic
+        function openNewSite(fileName) {
+            window.open(fileName, '_self'); 
+        }
+        function open2ndSite(url) {
+            window.open(url, '_blank'); // Changed to _blank for better user experience
+        }
+    </script>
+</body>
+</html>
