@@ -3,18 +3,12 @@
 <head>
     <title>Flokun - Home</title>
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        #bgVideo {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            object-fit: cover; /* This makes the video cover the screen without stretching */
-            background-color: black; /* Fallback color */
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Fira+Code:wght@500&display=swap');
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -22,225 +16,212 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* --- Background Image and Styling --- */
-            background-image: url('bg.jpg'); /* REPLACE THIS! */
+            background-image: url('bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            overflow: hidden;
-               margin: 0;
-               padding: 0;
-               font-family: Arial, sans-serif;
-               color: white;
-               text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-        }
-.form-box {
-    position: center;
-    width: 1000px;
-    padding: 30px;
-    border-radius: 15px;
-    /* Glassmorphism/blur effect - DECREASED TRANSPARENCY (0.8) */
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    color: white;
-    /* --- NEW SCROLLABLE PROPERTIES --- */
-    max-height: 90vh; /* Set a maximum height (e.g., 90% of the viewport height) */
-    overflow-y: auto;
-    &::-webkit-scrollbar{
-        display: none;
-    }/* Add a vertical scrollbar when content exceeds max-height */
-    /* ---------------------------------- */
-}
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
+            overflow-x: hidden;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
 
-        /*
-         * STYLES FOR THE IMAGE BUTTONS (UNCHANGED)
-         */
-        .my-input-button {
-            box-sizing: border-box; 
-            width: 100px;
-            height: 50px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain; 
-            cursor: pointer;
+        .form-box {
+            width: 1000px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .form-box::-webkit-scrollbar { display: none; }
+
+        /* --- ADVERTISEMENT FRAME STYLES --- */
+        #ad-frame {
+            width: 100%;
+            height: 400px; 
             position: relative;
-            transition: left 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; 
-            box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            text-align: center;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .code-font { font-family: 'Fira Code', monospace; }
+
+        .shape {
+            position: absolute;
+            z-index: 0;
+            filter: blur(40px);
+            opacity: 0.4;
+        }
+
+        /* --- BUTTONS & NAVIGATION --- */
+        .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+        
+        .my-input-button { 
+            box-sizing: border-box; 
+            width: 100px; 
+            height: 50px; 
+            background-repeat: no-repeat; 
+            background-position: center center; 
+            background-size: contain; 
+            cursor: pointer; 
+            position: relative; 
+            transition: all 0.3s ease; 
+            box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3); 
             padding: 0; 
             border-radius: 25px; 
-            border: none;
-            margin: 0 5px;
-        }
-        
-        .my-input-button:hover {
-            left: -0.15cm;
-            top: -0.15cm;
-            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5); 
-        }
-        
-        /*
-         * STYLES FOR THE MOVABLE IMAGES
-         */
-        .movable-image {
-            border-radius: 25px; 
             border: none; 
-            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.6);
-            position: relative; 
-            transition: left 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; 
-            margin-right: 7.5px;
-            margin-left: 7.5px;
+            margin: 0 5px; 
         }
-        
-        .movable-image:hover {
-            left: -0.25cm;
-            top: -0.25cm;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7); 
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-        .nav-links a:hover {
-            color: #ffeb3b;
-        }
-        
-        .services-layout {
-            display: flex; 
-            justify-content: center; 
-            max-width: 980px; 
-            margin: 30px auto 0;
-            padding: 0 10px;
-            gap: 15px; 
+        .my-input-button:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5); }
+
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; cursor: pointer; margin-right: 20px; }
+        .nav-links a:hover { color: #ffeb3b; }
+
+        /* --- TWO IMAGES SIDE-BY-SIDE --- */
+        .image-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .service-column {
-            width: 50%; 
-            text-align: left;
-            padding: 0 10px; 
+        .movable-image { 
+            width: 48%; 
+            border-radius: 25px; 
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.6); 
+            transition: all 0.3s ease; 
         }
+        .movable-image:hover { transform: translate(-5px, -5px); box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7); }
 
-        .service-column h2 {
-            text-align: center;
-            font-size: 24px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: lightgray;
-        }
-
-        .service-column p {
-            font-size: 1.1em;
-            line-height: 1.5;
-            margin-bottom: 0;
-            color: lightgray; 
-        }
-        .media-and-text-container {
-            max-width: 980px; 
-            margin: 0 auto; 
-            text-align: center; 
-        }
-        .register{
-            color: white;
-        }
-        .register :hover{
-            color: yellow ;
-        }
-        .contact{
-            color: white;
-        }
-        .contact:hover{
-            color: yellow;
-        }
+        /* --- TEXT LAYOUT --- */
+        .services-layout { display: flex; justify-content: center; max-width: 980px; margin: 30px auto 0; gap: 15px; }
+        .service-column { width: 50%; text-align: left; padding: 0 10px; }
+        .service-column h2 { text-align: center; font-size: 24px; margin: 10px 0; color: lightgray; }
+        .service-column p { font-size: 1.1em; line-height: 1.5; color: lightgray; }
+        .media-and-text-container { max-width: 980px; margin: 0 auto; text-align: center; }
     </style>
-    
 </head>
 <body>
 
- <div class="form-box">
-      <nav class="nav-links">
-            <a onclick="open2ndSite('register.html')">Register</a>
-            <a onclick="open2ndSite('https://wa.me/message/4UQOIMSC223ZG1')">Contact</a>
-        </nav>
+<div class="form-box">
+    <nav class="nav-links">
+        <a onclick="openNewSite('register.html')">Register</a>
+        <a onclick="open2ndSite('https://wa.me/message/4UQOIMSC223ZG1')">Contact</a>
+    </nav>
+     <div style="text-align:center; margin-top:20px;">
+        <img style="width:40%; margin: 0 auto;" src="logo.png" alt="Flokun Logo">
+    </div>
+<br>
+
+    <div id="ad-frame">
+        <div class="shape w-32 h-32 bg-blue-500 rounded-full top-5 left-5" id="shape1"></div>
+        <div class="shape w-48 h-48 bg-purple-500 rounded-full bottom-5 right-5" id="shape2"></div>
+
+        <div class="scene" id="scene1">
+            <h1 class="text-3xl md:text-5xl mb-2 font-extrabold text-white">READY TO <span class="gradient-text">BUILD?</span></h1>
+            <p class="text-blue-300 text-sm tracking-widest uppercase">The Future of Tech & Art</p>
+        </div>
+
+        <div class="scene" id="scene2">
+            <div class="code-font text-blue-400 text-lg mb-4 bg-slate-900/50 p-4 rounded-xl border border-blue-500/30">
+                <span class="text-purple-400">while</span> (learning) { student.<span class="text-green-400">evolve</span>(); }
+            </div>
+            <h2 class="text-3xl font-bold text-white">MASTER <span class="text-blue-400">CODE</span></h2>
+        </div>
+
+        <div class="scene" id="scene3">
+            <div class="relative w-24 h-24 mb-4">
+                <svg viewBox="0 0 200 200" class="w-full h-full text-purple-400 fill-current">
+                    <path d="M100 20 L180 150 L20 150 Z" opacity="0.5" />
+                    <circle cx="100" cy="100" r="60" class="text-pink-500" opacity="0.5" />
+                </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-white">CRAFT <span class="text-purple-400">DESIGN</span></h2>
+        </div>
+
+        <div class="scene" id="scene4">
+            <h2 class="text-3xl font-extrabold text-white mb-4">START YOUR <span class="gradient-text">JOURNEY</span></h2>
+            <div onclick="open2ndSite('register.html')" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-full text-xl font-bold cursor-pointer transition-all transform hover:scale-105 inline-block">
+                Register Now
+            </div><br>
+            <h5 style="align-content: center" >https://flokun-rynapse.github.io/flokun/</h5>
+        </div>
+    </div>
+
+   
+    
     <div style="text-align:center; margin-top:40px;">
-        <img style="width:30%;" src="logo.png" alt="Flokun Logo">
+        <button style="background-image: url('About1.png');" class="my-input-button" type="button" onclick="openNewSite('about.html')"><span class="visually-hidden">About Us</span></button>
+        <button style="background-image: url('Proceed1.png');" class="my-input-button" type="button" onclick="openNewSite('proceed.html')"><span class="visually-hidden">Proceed</span></button>
+        <button style="background-image: url('Learn1.png');" class="my-input-button" type="button" onclick="openNewSite('learn.html')"><span class="visually-hidden">Learn</span></button>
     </div>
     
-    <div style="text-align:center; margin-top:70px;">
-        
-        <button 
-            style="background-image: url('About1.png');" 
-            class="my-input-button" 
-            type="button"
-            onclick="openNewSite('about.html')">
-            <span class="visually-hidden">About Us</span>
-        </button>
-
-        <button 
-            style="background-image: url('Proceed1.png');" 
-            class="my-input-button" 
-            type="button"
-            onclick="openNewSite('proceed.html')">
-            <span class="visually-hidden">Proceed</span>
-        </button>
-        
-        <button 
-            style="background-image: url('Learn1.png');" 
-            class="my-input-button" 
-            type="button"
-            onclick="openNewSite('learn.html')">
-            <span class="visually-hidden">Learn</span>
-        </button>
-
-        
-    </div>
-    
-    <br><br><br>
-    
-    <div class="media-and-text-container">
-        
-        <div>
-            <img class="movable-image" style="width: 47.5%;" src="1 (2)1.png" alt="A descriptive image 1">
-            <img class="movable-image" style="width: 47.5%;" src="2 (2)1.png" alt="A descriptive image 2">
+    <div class="media-and-text-container" style="margin-top:50px;">
+        <div class="image-row">
+            <img class="movable-image" src="1 (2)1.png" alt="Image 1">
+            <img class="movable-image" src="2 (2)1.png" alt="Image 2">
         </div>
 
         <div class="services-layout">
             <div class="service-column">
                 <h2><b>Programming</b></h2>
-                <p>Beyond design, programming is the dedicated craft that transforms a static illustration into a dynamic, functional, and scalable digital asset. We write clean, secure, and future-proof code that serves as the invisible engine for your online success. Every line is an engineered solution, meticulously crafted to maximize user experience and deliver measurable impact for your business.</p>
+                <p>Beyond design, programming is the dedicated craft that transforms a static illustration into a dynamic, functional, and scalable digital asset. We write clean, secure, and future-proof code that serves as the invisible engine for your online success.</p>
             </div>
-
             <div class="service-column">
                 <h2><b>Designing</b></h2>
-                <p>Design is the art of strategic illustration. It's the critical first step where we translate your brand's essence and your business goals into a clean, intuitive, and visually compelling experience. We obsess over aesthetics, usability, and accessibility, ensuring every pixel is placed with purpose. Our focus is on crafting designs that not only look stunning but that guide the user, build trust, and ultimately amplify the impact of your message in a crowded digital landscape.</p>
+                <p>Design is the art of strategic illustration. It's the critical first step where we translate your brand's essence and your business goals into a clean, intuitive, and visually compelling experience.</p>
             </div>
         </div>
+    </div>
+</div>
 
-    </div>
-    <script>
-        function openNewSite(fileName) {
-            window.open(fileName, '_self'); 
-        }
-        function open2ndSite(fileName) {
-            window.open(fileName, '_main'); 
-        }
-    </script>
-    </div>
+<script>
+    // AD ANIMATION LOGIC
+    const tl = gsap.timeline({ repeat: -1 });
+    gsap.set(".scene", { opacity: 0, scale: 0.8 });
+
+    tl.to("#scene1", { opacity: 1, scale: 1, duration: 0.5 })
+      .to("#scene1", { opacity: 0, duration: 0.3 }, "+=1.5")
+      
+      .to("#scene2", { opacity: 1, scale: 1, duration: 0.5 })
+      .to("#scene2", { opacity: 0, duration: 0.3 }, "+=1.5")
+      
+      .to("#scene3", { opacity: 1, scale: 1, duration: 0.5 })
+      .to("#scene3", { opacity: 0, duration: 0.3 }, "+=1.5")
+      
+      .to("#scene4", { opacity: 1, scale: 1, duration: 0.5 })
+      // WAITS 3 SECONDS ON THE FINAL BUTTON BEFORE RESTARTING
+      .to("#scene4", { opacity: 0, duration: 0.3 }, "+=3.5"); 
+
+    // UTILITY FUNCTIONS
+    function openNewSite(fileName) { window.open(fileName, '_self'); }
+    function open2ndSite(fileName) { window.open(fileName, '_blank'); }
+</script>
+
 </body>
 </html>
